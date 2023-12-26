@@ -5,7 +5,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-public class ReaderPDL {
+public class PDL {
     @SneakyThrows
     public void parse(String urlAddress) {
         Document document = Jsoup.connect(urlAddress).get();
@@ -16,11 +16,5 @@ public class ReaderPDL {
 
         Elements title = document.select("title");
         System.out.println("Title: " + title.text());
-
-        String logo = document.select("link[rel$=icon]").attr("href");
-        if (logo.startsWith("/")) {
-            logo = urlAddress + logo;
-        }
-        System.out.println("Logo: " + logo);
     }
 }
